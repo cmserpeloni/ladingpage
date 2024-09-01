@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F. Da Pizza - Nossas Filiais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #d35400;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .filiais {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .filial {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filial1 {
+            background-image: url('fab1.jfif');
+        }
+
+        .filial2 {
+            background-image: url('fab2.jfif');
+        }
+
+        .filial3 {
+            background-image: url('fab3.jfif');
+        }
+
+        .filial h3 {
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .filial .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filial:hover .overlay {
+            opacity: 1;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #d35400;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Fábrica Da Pizza</h1>
+        <img src="logo.png" class="rounded float-left" alt="logo.png">
+        <p>Conheça nossas filiais nas cidades abaixo e faça seu cadastro para ficar por dentro da super promoção de DIA DOS PAIS!</p>
+    </header>
+
+    <section class="filiais">
+        <div class="filial filial1">
+            <h3>Filial 1 - Balneário Camboriú</h3>
+            <p>Endereço: Rua Igor Bobo da Silva, 123</p>
+            <p>Telefone: (11) 1234-5678</p>
+            <div class="overlay">PARA SABER MAIS FAÇA CADASTRO</div>
+        </div>
+        <div class="filial filial2">
+            <h3>Filial 2 - Recife</h3>
+            <p>Endereço: Avenida Cacique Grande, 456</p>
+            <p>Telefone: (21) 8765-4321</p>
+            <div class="overlay">PARA SABER MAIS FAÇA CADASTRO</div>
+        </div>
+        <div class="filial filial3">
+            <h3>Filial 3 - Florianópolis</h3>
+            <p>Endereço: Praça do Pobre Coitado, 789</p>
+            <p>Telefone: (31) 5555-5555</p>
+            <div class="overlay">PARA SABER MAIS FAÇA CADASTRO</div>
+        </div>
+    </section>
+
+    <section>
+        <form id="cadastroForm">
+            <h2>Cadastro para novidades</h2>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Seu número de WhatsApp" pattern="\d*" required>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("whatsapp").addEventListener("input", function(event) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var nome = document.getElementById("nome").value;
+            var whatsapp = document.getElementById("whatsapp").value;
+            var url = "https://wa.me/SEU_NUMERO_DE_TELEFONE_AQUI?text=Nome: " + encodeURIComponent(nome) + "%0ANúmero de WhatsApp: " + whatsapp;
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
